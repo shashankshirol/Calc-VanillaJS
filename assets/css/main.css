@@ -47,6 +47,17 @@ body{
     word-break: break-all;
 }
 
+.output > button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.output .copy{
+    border: 1px solid white;
+    align-self: flex-start;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
 .output .previous-operand{
     color: rgba(255, 255, 255, .75);
     font-size: 1.5rem;

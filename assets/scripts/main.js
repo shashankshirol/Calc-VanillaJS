@@ -57,6 +57,14 @@ class Calculator{
         this.prev = '';
     }
 
+    getResult(){
+        if(this.operation === undefined){
+            return this.curr;
+        }
+
+        return;
+    }
+
     getDisplayNumber(num){
         const stringNumber = num.toString();
         const intDigits = parseFloat(stringNumber.split('.')[0]);
@@ -91,6 +99,7 @@ const del = document.querySelector('[data-delete]');
 const allClear = document.querySelector('[data-allclear]');
 const prevOp = document.querySelector('[data-prev]');
 const currOp = document.querySelector('[data-curr]');
+const copy = document.querySelector('[data-copy]');
 
 
 const calc = new Calculator(prevOp, currOp);
@@ -122,4 +131,16 @@ allClear.addEventListener('click', button =>{
 del.addEventListener('click', button =>{
     calc.delete();
     calc.updateDisp();
+});
+
+copy.addEventListener('click', button =>{
+    let ans = calc.getResult();
+    if(!isNaN(ans)){
+        var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = ans.toString();
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+    }
 });
